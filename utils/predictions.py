@@ -27,7 +27,7 @@ def get_detected_intent(prediction):
 
 def stats_by_intent(dataset, predictions):
     """
-    Computes TP, FP, TP+FN, TP+FP for each intent
+    Returns a dict with TP, FP, TP+FN, TP+FP for each intent + "global" intent
     """
     stats_by_intent = {}
 
@@ -37,7 +37,7 @@ def stats_by_intent(dataset, predictions):
     stats_by_intent["global"] = {"TP": 0, "FP": 0, "TP+FN": 0, "TP+FP": 0}
 
     # computes stats
-    for i, query in dataset.enumerate():
+    for i, query in enumerate(dataset):
         detected_intent = get_detected_intent(predictions[i])
         true_intent = query["intent"]
 
