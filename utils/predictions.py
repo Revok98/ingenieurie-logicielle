@@ -57,4 +57,4 @@ def stats_by_intent(dataset, predictions):
 
 def print_stats_by_intent(stats):
     df = pd.DataFrame(stats)
-    print(df)
+    print(df.T)
