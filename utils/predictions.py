@@ -1,5 +1,6 @@
 import requests
 import json
+import pandas as pd
 
 def generate_predictions_dataset(query_dataset_path="../data/testing_set.json", endpoint="http://localhost:8000/api/intent", save_on_disk=False):
     """
@@ -53,3 +54,7 @@ def stats_by_intent(dataset, predictions):
         stats_by_intent[intent]["FP"] = stats_by_intent[intent]["TP+FP"] - stats_by_intent[intent]["TP"]
     
     return stats_by_intent
+
+def print_stats_by_intent(stats):
+    df = pd.DataFrame(stats)
+    print(df.T)
