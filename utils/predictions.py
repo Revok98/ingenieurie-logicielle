@@ -35,7 +35,6 @@ def stats_by_intent(dataset, predictions):
     # add key for each intent + global 
     for intent in predictions[0].keys():
         stats_by_intent[intent] = {"TP": 0, "FP": 0, "TP+FN": 0, "TP+FP": 0}
-    stats_by_intent["global"] = {"TP": 0, "FP": 0, "TP+FN": 0, "TP+FP": 0}
 
     # computes stats
     for i, query in enumerate(dataset):
@@ -44,7 +43,6 @@ def stats_by_intent(dataset, predictions):
 
         if detected_intent == true_intent:
             stats_by_intent[detected_intent]["TP"] += 1
-            stats_by_intent["global"]["TP"] += 1
         
         stats_by_intent[detected_intent]["TP+FP"] += 1
         stats_by_intent[true_intent]["TP+FN"] += 1
@@ -52,6 +50,13 @@ def stats_by_intent(dataset, predictions):
     # isolate FP for convenience 
     for intent in stats_by_intent:
         stats_by_intent[intent]["FP"] = stats_by_intent[intent]["TP+FP"] - stats_by_intent[intent]["TP"]
+    
+    # precision and recall
+    for intent in stats_by_intent:
+        if stats_by_intent[intent]["TP+FP"] != 0:
+            stats_by_intent[intent]["precision"] = stats_by_intent[intent]["TP"] / stats_by_intent[intent]["TP+FP"]
+        if stats_by_intent[intent]["TP+FN"] != 0:
+            stats_by_intent[intent]["recall"] = stats_by_intent[intent]["TP"] / stats_by_intent[intent]["TP+FN"]
     
     return stats_by_intent
 
