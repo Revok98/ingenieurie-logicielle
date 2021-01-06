@@ -15,7 +15,7 @@ def generate_predictions_dataset(query_dataset_path="../data/testing_set.json", 
         dataset.append(r.json())
 
     if save_on_disk:
-        with open('../data/predict.json', 'w') as outfile:
+        with open('../data/predict2.json', 'w') as outfile:
             json.dump(dataset, outfile, indent=4)
 
     return dataset
@@ -32,7 +32,7 @@ def stats_by_intent(dataset, predictions):
     """
     stats_by_intent = {}
 
-    # add key for each intent + global 
+    # add key for each intent + global
     for intent in predictions[0].keys():
         stats_by_intent[intent] = {"TP": 0, "FP": 0, "TP+FN": 0, "TP+FP": 0}
 
@@ -43,23 +43,25 @@ def stats_by_intent(dataset, predictions):
 
         if detected_intent == true_intent:
             stats_by_intent[detected_intent]["TP"] += 1
-        
+
         stats_by_intent[detected_intent]["TP+FP"] += 1
         stats_by_intent[true_intent]["TP+FN"] += 1
 
-    # isolate FP for convenience 
+    # isolate FP for convenience
     for intent in stats_by_intent:
         stats_by_intent[intent]["FP"] = stats_by_intent[intent]["TP+FP"] - stats_by_intent[intent]["TP"]
-    
+
     # precision and recall
     for intent in stats_by_intent:
         if stats_by_intent[intent]["TP+FP"] != 0:
             stats_by_intent[intent]["precision"] = stats_by_intent[intent]["TP"] / stats_by_intent[intent]["TP+FP"]
         if stats_by_intent[intent]["TP+FN"] != 0:
             stats_by_intent[intent]["recall"] = stats_by_intent[intent]["TP"] / stats_by_intent[intent]["TP+FN"]
-    
+
     return stats_by_intent
 
 def print_stats_by_intent(stats):
     df = pd.DataFrame(stats)
     print(df.T)
+
+generate_predictions_dataset(endpoint="http://127.0.0.1:8080/api/intent", save_on_disk=True)
