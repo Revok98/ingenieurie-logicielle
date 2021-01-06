@@ -1,0 +1,2 @@
+model_checkpoint_path: "/content/./NLU/models/default/model_20201230-144922/component_1_EmbeddingIntentClassifier.ckpt"
+all_model_checkpoint_paths: "/content/./NLU/models/default/model_20201230-144922/component_1_EmbeddingIntentClassifier.ckpt"
