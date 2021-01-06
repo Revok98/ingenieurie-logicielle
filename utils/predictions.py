@@ -12,7 +12,7 @@ def generate_predictions_dataset(query_dataset_path="../data/testing_set.json", 
     dataset = []
     for query_data in data:
         r = requests.get(query_prefix + query_data["sentence"])
-        dataset.append(r.json())
+        dataset.append({a:float(b) for a,b in  r.json().items()})
 
     if save_on_disk:
         with open('../data/predict2.json', 'w') as outfile:
