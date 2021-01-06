@@ -1,0 +1,6 @@
+sklearn_crfsuite
+tensorflow==1.13.1
+rasa_nlu==0.15.1
+locust
+uvicorn[standard]
+fastapi
