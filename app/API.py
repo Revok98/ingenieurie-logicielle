@@ -20,7 +20,7 @@ def call_model(sentence : str) :
 
 @app.get("/")
 async def read_root():
-    first_str = {"root_page":"0.1", "bien ouej":"0.1"}
+    first_str = {"root_page":"no result", "bienvenue sur la page d'accueil":"no result"}
     return first_str
 
 
