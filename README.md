@@ -18,7 +18,7 @@
 
 ### Documentation service endpoint
 
-Le service endpoint est accessible via plusieurs pages. 
+Le service endpoint est accessible via plusieurs pages.
   - Tout d'abord une page d'accueil qui n'a pas de réel intérêt si ce n'est de prévenir l'utilisateur que le service est bien lancé
   - Une page de requête. Cette page est la page principale. Elle est accessible via un navigateur à l'adresse suivante : [adresse réseau (exemple : 127.0.0.1)]:[port]/api/intent?sentence=[phrase à classer]. Noter que la phrase à classer doit être entourée de **"**. Le retour de la page est alors un dictionnaire qui contient pour chaque intent un facteur de confiance, assimilable à une probabilité (assimilable seulement car la somme ne vaut pas forcément 1, témoignant du fait que des phrases puisse à la fois présenter un aspect find-train et purchase par exemple).  
 
@@ -32,7 +32,7 @@ Le service endpoint est accessible via plusieurs pages.
 
 * utils : Contient des fonctions utiles à la visualisation et à la réponse aux exercices dans deux fichiers python.
 
-* Reponse_exercices.ipynb : Jupyter notebook qui contient les différentes réponses aux exercices et les visualisations nécessaires pour appuyer les réponses.
+* reponse_exercices.ipynb : Jupyter notebook qui contient les différentes réponses aux exercices et les visualisations nécessaires pour appuyer les réponses.
 
 * stat_dataset.ipynb : fichier qui permet la visualisation de statistiques sur le dataset d'entraînement et de test
 
