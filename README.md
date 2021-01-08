@@ -1,16 +1,10 @@
 # Projet d'ingénierie logicielle pour l'IA
 
-### Exercice 1
+### Lancement de l'image 
 
-Récupérer le docker du stagiaire :
-```docker pull wiidiiremi/projet_industrialisation_ia_3a```
+Lancer l'image docker (port 8080)
+```docker run -d --net=host -p 8080:8080 app```
 
-Lancer le docker (port 8080)
-```docker run -p 8080:8080 wiidiiremi/projet_industrialisation_ia_3a```
-
-### Installation de Spacy
-
-TODO
 
 
 ### Documentation service endpoint
